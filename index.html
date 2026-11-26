@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A local password strength checker and secure password generator." />
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Password Lab home">
+        <span class="brand-mark" aria-hidden="true">⌑</span>
+        <span>Password<span class="brand-accent">Lab</span></span>
+      </a>
+      <span class="local-badge"><span class="status-dot"></span> LOCAL ANALYSIS</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">CYBERSECURITY • PASSWORD AUDIT</p>
+      <h1>How strong is<br /><span>your password?</span></h1>
+      <p class="hero-copy">Check password strength and learn how to improve it. Your password is analyzed in this browser and is never saved or transmitted.</p>
+    </section>
+
+    <section class="checker-card" aria-labelledby="checker-title">
+      <div class="card-heading">
+        <div>
+          <p class="eyebrow">PASSWORD ANALYZER</p>
+          <h2 id="checker-title">Test a password</h2>
+        </div>
+        <span class="shield-icon" aria-hidden="true">🛡</span>
+      </div>
+
+      <label class="field-label" for="passwordInput">Enter password</label>
+      <div class="password-field">
+        <input id="passwordInput" type="password" autocomplete="off" spellcheck="false" placeholder="Type a password to analyze" maxlength="256" />
+        <button id="togglePassword" class="icon-button" type="button" aria-label="Show password" title="Show password">◉</button>
+      </div>
+
+      <div class="strength-head">
+        <span class="field-label">STRENGTH</span>
+        <strong id="strengthLabel" class="strength-label neutral">Not tested</strong>
+      </div>
+      <div class="strength-track" aria-label="Password strength">
+        <div id="strengthFill" class="strength-fill"></div>
+      </div>
+      <p id="strengthSummary" class="summary" aria-live="polite">Enter a password to see your security analysis.</p>
+
+      <div class="metrics-grid">
+        <div class="metric"><span class="metric-name">Length</span><strong id="lengthValue">0 chars</strong></div>
+        <div class="metric"><span class="metric-name">Character types</span><strong id="typesValue">0 / 4</strong></div>
+        <div class="metric"><span class="metric-name">Estimated entropy</span><strong id="entropyValue">— bits</strong></div>
+        <div class="metric"><span class="metric-name">Pattern checks</span><strong id="patternValue">—</strong></div>
+      </div>
+
+      <div class="analysis-section">
+        <div class="section-title-row"><h3>Security checklist</h3><span id="checkCount">0 / 5</span></div>
+        <ul id="checklist" class="checklist">
+          <li class="pending"><span class="check-icon">•</span><span>Enter a password to start checking.</span></li>
+        </ul>
+      </div>
+
+      <div class="analysis-section recommendations-section">
+        <div class="section-title-row"><h3>Recommendations</h3><span class="tiny-tag">ACTIONABLE</span></div>
+        <ul id="recommendations" class="recommendations">
+          <li>Use a long, unique password or passphrase.</li>
+        </ul>
+      </div>
+
+      <div class="generator">
+        <div class="section-title-row"><h3>Password generator</h3><span class="tiny-tag">CRYPTO-RANDOM</span></div>
+        <div class="generator-controls">
+          <label for="lengthSlider">Length <strong id="generatedLength">20</strong></label>
+          <input id="lengthSlider" type="range" min="12" max="64" value="20" />
+        </div>
+        <div class="generated-field">
+          <input id="generatedPassword" type="text" readonly aria-label="Generated password" placeholder="Generated password appears here" />
+          <button id="copyGenerated" class="secondary-button" type="button">Copy</button>
+        </div>
+        <button id="generateButton" class="primary-button" type="button">Generate secure password <span aria-hidden="true">↗</span></button>
+        <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <footer>
+      <p><span class="footer-lock">▣</span> Privacy first — analysis runs locally in your browser.</p>
+      <p class="disclaimer">Educational tool only. This heuristic checker is not a guarantee of password security and does not check breach databases.</p>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
